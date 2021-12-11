@@ -8,11 +8,25 @@
 // The push() and buildOneTwoThree() functions do not need to be redefined.
 
 function Node(data) {
-    this.data = data;
-    this.next = null;
+  this.data = data;
+  this.next = null;
+}
+
+function sortedInsert(head, data) {
+    var node = new Node(data);
+  var next = head;
+  if (!head) {
+    head = node;
+  } else if (head.data > node.data) {
+    node.next = head;
+    head = node;
+  } else {    
+    while (next.next && next.next.data < node.data) {
+      next = next.next
+    };
+    node.next = next.next;
+    next.next = node;
   }
-  
-  function sortedInsert(head, data) {
-    // Your code goes here.
-    // Remember to return the head of the list.
-  }
+  return head;
+
+}
