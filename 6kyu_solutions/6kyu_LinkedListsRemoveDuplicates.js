@@ -10,3 +10,24 @@
 
 // The push() and buildOneTwoThree() functions need not be redefined.
 
+function Node(data) {
+  this.data = data;
+  this.next = null;
+}
+
+function removeDuplicates(head) {
+  if (!head) return null;
+  if (!head.next) return head;
+
+  let current = head 
+  let prev = new Node()
+
+  while (current) {
+    if (prev.data === current.data) {
+        prev.next = current.next
+    } else {
+        prev = curr
+        curr = curr.next
+    }
+  }
+}
