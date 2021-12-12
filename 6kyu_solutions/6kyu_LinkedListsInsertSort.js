@@ -27,3 +27,4 @@ function Node(data) {
     return newHead;  
   }
   
+  
