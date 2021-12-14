@@ -32,8 +32,9 @@
 //     obj.foobar = curry(obj.b, 'bar');
 //     obj.foobar() //should return foobar\
 
-function curry(fun,...args) {
-    return function(...arg2) {
-    return fun.call(this,...args,...arg2);
-  }
+
+function curry(fn, ...x1) {
+    return function(...x2) {
+        return fn.call(this, ...x1, ...x2);
+    }
 }
