@@ -141,3 +141,19 @@ const circularRef = {};
 circularRef.circularRef = circularRef;
 
 console.log(circularRef);
+
+
+function Node(data,n) {
+    this.data = data;
+    this.next = n;
+  }
+  
+  function sortedInsert(head, data) {
+    if(!head||data<head.data)return new Node(data,head)
+    h=head
+    n=head.next
+    while(n&&data>n.data){[h,n]=[n,n.next]}
+    h.next=new Node(data,n)
+    return head
+  }
+//   
