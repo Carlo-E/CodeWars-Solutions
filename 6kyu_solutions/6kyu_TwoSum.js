@@ -9,24 +9,35 @@
 // twoSum [1, 2, 3] 4 === (0, 2)
 
 function twoSum(numbers, target) {
-    for(let i = 0; i < numbers.length; i++){
-        // console.log(numbers[i])
-        // 1 2 3
-        for(let j = i + 1; j < numbers.length; j++){
-           console.log(i)
-
-            // console.log(numbers[i], numbers[j])
-            // console.log(numbers[i])
-            // if(numbers[i] + numbers[j] === target){
-                // 1 + 2
-                // 1 + 3
-                // 2 + 
-                // return [i, j]
-            // }
-        }
+  for (let i = 0; i < numbers.length; i++) {
+    for (let j = i + 1; j < numbers.length; j++) {
+      if (numbers[i] + numbers[j] === target) {
+        return [i, j];
+      }
     }
+  }
 }
 
-console.log(twoSum([1,2,3], 4))
+const cards = [10, 3, 10, 8, 10, 11, 7, 10, 9, 6, 5, 2, 4];
+// 3, 10
+// temp = 10
+// 10 = 3
+// 3 = 10
 
-
+const bubbleSort = (arr) => {
+  let unsorted = true;
+  while (unsorted) {
+      unsorted = false 
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] > arr[i + 1]) {
+        //   let temp = arr[i];
+        //   arr[i] = arr[i + 1];
+        //   arr[i + 1] = temp;
+        [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+        unsorted = true
+      }
+    }
+  }
+  return arr;
+};
+console.log(bubbleSort(cards));

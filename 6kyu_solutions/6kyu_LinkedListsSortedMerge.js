@@ -143,17 +143,15 @@ circularRef.circularRef = circularRef;
 console.log(circularRef);
 
 
-function Node(data,n) {
+function Node(data, nxt) {
     this.data = data;
-    this.next = n;
+    this.next = nxt;
+  }
+  function sortedInsert(head, data) {
+    if(!head || data < head.data) return new Node(data, head);
+    else {
+      head.next = sortedInsert(head.next, data);
+      return head;
+    }
   }
   
-  function sortedInsert(head, data) {
-    if(!head||data<head.data)return new Node(data,head)
-    h=head
-    n=head.next
-    while(n&&data>n.data){[h,n]=[n,n.next]}
-    h.next=new Node(data,n)
-    return head
-  }
-//   
