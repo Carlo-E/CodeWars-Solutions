@@ -15,45 +15,23 @@ function Context(first, second) {
 }
 
 function alternatingSplit(head) {
-  // Your code goes here.
-  // Remember to return the context.
-  let result = null;
-  if (this.head != null) {
-    let temp = head;
-    let tail = null;
-    let current = null;
-    let prev = head;
-    while (temp != null && temp.next != null) {
-      current = temp.next;
-      prev = temp;
-      temp = temp.next.next;
-      if (result === null) {
-        current.next = result;
-        result = current;
-        tail = current;
-      } else {
-        current.next = tail.next;
-        tail.next = current;
-        tail = current;
-      }
-      prev.next = temp;
-    }
+  const first = head;
+  const second = head.next;
+  if (!second) {
+    throw error;
   }
-  return result;
-}
 
-function moveNode(source, dest) {
-  if (!source) {
-    throw new Error("Source is not present !");
-  }
-  const newSource = source.next;
-  source.next = dest;
-  return new Context(newSource, source);
+  let a = first;
+  let b = second;
+
+  moveNode(a, b);
+
+  return new Context(first, second);
 }
 
 function moveNode(first, second) {
   if (!first || !second) {
-    throw new Error("Error");
+    return;
   }
   if (first.next != null) {
     first.next = first.next.next;
@@ -62,5 +40,5 @@ function moveNode(first, second) {
     second.next = second.next.next;
   }
 
-  return new Context(first.next, second.next);
+  return moveNode(first.next, second.next);
 }
