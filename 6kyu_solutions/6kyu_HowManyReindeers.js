@@ -15,12 +15,15 @@
 // reindeers(200); // must throw an error
 
 function reindeers(presents) {
-  //   if (presents === 0) return 2;
-  //   if (presents <= 30) return 3;
-  //   if (presents <= 60) return 4;
-  //   if (presents <= 90) return 5;
-  //   if (presents <= 120) return 6;
-  //   if (presents <= 150) return 7;
-  //   if (presents <= 180) return 8;
-  //   throw Error()
+  // if (presents === 0) return 2;
+  // if (presents <= 30) return 3;
+  // if (presents <= 60) return 4;
+  // if (presents <= 90) return 5;
+  // if (presents <= 120) return 6;
+  // if (presents <= 150) return 7;
+  // if (presents <= 180) return 8;
+  // throw Error()
+
+  if (presents > 180) throw "Too many presents!";
+  return Math.ceil(presents / 30) + 2;
 }
