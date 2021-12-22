@@ -23,29 +23,53 @@ function Node(data) {
 }
 
 function frontBackSplit(source, front, back) {
-  let len = size(source);
-  if (len < 2) {
-    front = source;
-    back = null;
-    return new Node(front, back);
-  }
-  let current = source;
-  let hopCount = (len - 1) / 2;
-  for (let i = 0; i < hopCount; i++) {
-    current = current.next;
-  }
-  front = source;
-  back = current.next;
-  current.next = null;
-
-  return new Node(front, back);
+  //     let len = size(source)
+  //     let mid = Math.ceil(len / 2)
+  //     let current = front
+  //     while (mid) {
+  //       if (current.data) {
+  //         let newNode = new Node(source.data)
+  //         current.next = newNode
+  //         current = current.next
+  //       } else {
+  //         current.data = source.data
+  //       }
+  //       source = source.next
+  //       mid--
+  //     }
+  //     back.data = source.data
+  //     return back.next = source.next
+  //   }
+  // function size(node) {
+  //   let count = 0;
+  //   while (node) {
+  //     count++;
+  //     source = source.next;
+  //   }
+  //   return count;
+  // }
 }
 
-function size(node) {
-  let count = 0;
-  while (node) {
-    count++;
-    source = source.next;
+function frontBackSplit(source, front, back) {
+  if (!source || !source.next) {
+    throw new Error();
   }
-  return count;
+
+  front.data = source.data;
+  front.next = source.next;
+
+  let slow = front;
+  let fast = front;
+
+  while (fast) {
+    fast = fast.next && fast.next.next;
+
+    if (fast) {
+      slow = slow.next;
+    }
+  }
+
+  back.data = slow.next && slow.next.data;
+  back.next = slow.next && slow.next.next;
+  slow.next = null;
 }

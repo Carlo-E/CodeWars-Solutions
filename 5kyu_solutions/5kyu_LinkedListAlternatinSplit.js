@@ -16,15 +16,14 @@ function Context(first, second) {
 
 function alternatingSplit(head) {
   const first = head;
+  // 1 - 2 - null
   const second = head.next;
+  // 2 - null
   if (!second) {
     throw error;
   }
 
-  let a = first;
-  let b = second;
-
-  moveNode(a, b);
+  moveNode(first, second);
 
   return new Context(first, second);
 }
@@ -35,9 +34,11 @@ function moveNode(first, second) {
   }
   if (first.next != null) {
     first.next = first.next.next;
+    // 2 - null = null
   }
   if (second.next != null) {
     second.next = second.next.next;
+    // null = undefined 
   }
 
   return moveNode(first.next, second.next);
