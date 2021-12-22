@@ -60,10 +60,8 @@ function frontBackSplit(source, front, back) {
 
   let slow = front;
   let fast = front;
-
   while (fast) {
     fast = fast.next && fast.next.next;
-
     if (fast) {
       slow = slow.next;
     }
@@ -73,3 +71,5 @@ function frontBackSplit(source, front, back) {
   back.next = slow.next && slow.next.next;
   slow.next = null;
 }
+
+
