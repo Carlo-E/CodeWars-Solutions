@@ -16,3 +16,10 @@ function removeDuplicateWords(s) {
   let arr2 = [...new Set(arr)];
   return arr2.join(" ");
 }
+
+// or
+
+function removeDuplicateWords(s) {
+  // your perfect code...
+  return [...new Set(s.split(" "))].join(" ");
+}
