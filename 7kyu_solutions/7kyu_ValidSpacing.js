@@ -16,16 +16,20 @@
 // '' = true
 
 function validSpacing(s) {
-  // write your code here
-  let arr = s.trim();
-
-
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === " " && arr[i + 1] === " ") {
+  for (let i = 0; i < s.length; i++) {
+    if (
+      s[0] === " " ||
+      s[s.length - 1] === " " ||
+      (s[i] === " " && s[i + 1] === " ")
+    ) {
       return false;
-    } else {
-      return true;
     }
   }
+  return true;
 }
-console.log(validSpacing(" Hello World"))
+
+// or 
+
+function validSpacing(s) {
+    return s.trim() == s && !s.includes("  ");
+  }
