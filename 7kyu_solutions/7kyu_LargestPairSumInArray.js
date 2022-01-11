@@ -28,6 +28,8 @@ function largestPairSum(numbers) {
   return Number(first) + Number(second);
 }
 
+// or
+
 function largestPairSum(numbers) {
   numbers.sort(function (a, b) {
     return b - a;
