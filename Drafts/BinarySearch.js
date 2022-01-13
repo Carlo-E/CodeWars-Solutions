@@ -20,40 +20,23 @@
 
 // Note: indexOf, lastIndexOf, eval, sort and sortedIndex are disabled.
 
-function binSearch(arr, toSearch) {
-  // TODO
-  let mid = Math.floor(arr.length / 2);
-
-  if (arr[mid] === toSearch) {
-    console.log('match', arr[mid], toSearch);
-    return arr[mid];
-} else if (arr[mid] < toSearch && arr.length > 1) {
-    console.log('mid lower', arr[mid], toSearch);
-    return binSearch(arr.splice(mid, Number.MAX_VALUE), toSearch);
-} else if (arr[mid] > toSearch && arr.length > 1) {
-    console.log('mid higher', arr[mid], toSearch);
-    return binSearch(arr.splice(0, mid), toSearch);
-} else {
-    return -1
+let binarySearchRec = function (a, key, low, high) {
+  if (low > high) {
+    return -1;
   }
-  //     if(toSearch <= mid) {
-  //         while(arr.length > 0){
-  //             let node = arr.shift()
-  //         }
-  //     for (let i = 0; i <= mid; i++) {
-  //         if (arr[i] === toSearch) {
-  //         return i;
-  //       }
-  //     }
-  //   } else {
-  //     for (let i = mid; i < toSearch; i++) {
-  //       if (arr[i] === toSearch) {
-  //         return i;
-  //       } else {
-  //         return -1;
-  //       }
-  //     }
-  //   }
+
+  let mid = low + Math.floor((high - low) / 2);
+
+  if (a[mid] === key) {
+    return mid;
+  } else if (key < a[mid]) {
+    return binarySearchRec(a, key, low, mid - 1);
+  } else {
+    return binarySearchRec(a, key, mid + 1, high);
+  }
+};
+
+function binSearch(arr, toSearch) {
+  return binarySearchRec(arr, toSearch, 0, arr.length - 1);
 }
-let arr = [1, 2, 3, 4, 5];
-console.log(binSearch(arr, 2));
+
