@@ -22,4 +22,11 @@ var isSquare = function (n) {
   let s = Math.sqrt(n);
   return s === Math.floor(s);
 };
-console.log(isSquare(-1))
+
+// or
+
+function isSquare(n) {
+  return Math.sqrt(n) % 1 === 0;
+//  5 
+
+}
