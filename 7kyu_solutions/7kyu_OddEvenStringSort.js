@@ -20,9 +20,20 @@
 // And the final string to return is 'Cdwr oeas'
 
 function sortMyString(S) {
-  let evenStr = []
-  let oddStr = []
-  S.split("").map((el, i) => i % 2 === 0 ? evenStr.push(el) : oddStr.push(el))
-  return [...evenStr, " ", ...oddStr].join("")
+  let evenStr = [];
+  let oddStr = [];
+  S.split("").map((el, i) =>
+    i % 2 === 0 ? evenStr.push(el) : oddStr.push(el)
+  );
+  return [...evenStr, " ", ...oddStr].join("");
 }
-console.log(sortMyString("CodeWars"));
+
+// or
+
+function sortMyString(S) {
+  
+  let evens = S.split("").filter((el, i) => i % 2 === 0).join("");
+  let odds = S.split("").filter((el, i) => i % 2 !== 0).join("");
+
+  return evens + " " + odds;
+}
