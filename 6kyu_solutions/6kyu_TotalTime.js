@@ -32,22 +32,88 @@
 // totalTime(['24:00:00','24:00:00','07']); // --> '2 days, 7 seconds'
 
 function totalTime(arr) {
-
-    arr = arr.toString("").split(":")
-// console.log(arr)
-  for (let i = 0; i < arr.length; i++) {
-    arr[i].split(":");
-  }
-//   console.log(arr)
-//   console.log(arr.join(""));
-
+    arr = arr.toString("").split(":");
+    console.log(Number(arr[0]))
+    console.log(arr.length)
+    if (arr.length === 1) {
+        if(Number(arr[0]) === 60) {
+        let minutes = Math.floor(Number(arr[0] / 60))
+        return minutes === 1 ? minutes + " " + "minute" : minutes + "minutes";
+    } else {
+        arr[0].toString() + " " + 'minutes'
+    } 
+}
+if (arr.length === 3) {
+  console.log(splitTime(arr));
+} else {
+  arr = arr.toString("").split(":");
   let sum = Number(arr.join(""));
-//   console.log(sum);
-  if (arr.length === 1 && sum === 60) {
+  //   console.log(sum);
+  if (sum.length === 1 && sum === 60) {
     return `1 minute`;
   } else {
     return `${sum} minutes`;
   }
 }
+}
 
-console.log(totalTime(["25:01:01"]));
+console.log(totalTime(["50:02:02"]));
+
+function splitTime(arr) {
+  let days = Math.floor(Number(arr[0] / 24));
+  let remainder = Number(arr[0]) % 24;
+  let hours = Math.floor(remainder);
+  let minutes = Math.floor(Number(arr[1]));
+  let seconds = Number(arr[2]);
+
+  if (days === 1) {
+    days = `${days} day`;
+  } else {
+    days = `${days} days`;
+  }
+
+  if (minutes === 1) {
+    minutes = `${minutes} minute`;
+  } else {
+    minutes = `${minutes} minutes`;
+  }
+
+  if (hours === 1) {
+    hours = `${hours} hour`;
+  } else {
+    hours = `${hours} hours`;
+  }
+
+  if (seconds === 1) {
+    seconds = `${seconds} second`;
+  } else {
+    seconds = `${seconds} seconds`;
+  }
+
+  return days + " " + hours + " " + minutes + " " + seconds;
+}
+
+
+function sumTime(arr) {
+   arr[0] =  arr[0].split(":")
+   arr[1] = arr[1].split(":")
+
+   let minutes = Number(arr[0][0]) + Number(arr[1][0])
+   let seconds = Number(arr[0][1]) + Number(arr[1][1])
+
+   if (minutes === 1) {
+    minutes = `${minutes} minute`;
+  } else {
+    minutes = `${minutes} minutes`;
+  }
+  if (seconds === 1) {
+    seconds = `${seconds} second`;
+  } else {
+    seconds = `${seconds} seconds`;
+  }
+
+  return minutes + "," + " " + seconds;
+
+
+}
+console.log(sumTime(['01:20','03:10']))
