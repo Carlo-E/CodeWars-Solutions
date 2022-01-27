@@ -116,4 +116,4 @@ function sumTime(arr) {
 
 
 }
-console.log(sumTime(['01:20','03:10']))
+console.log(sumTime(['00:50','00:30']))
