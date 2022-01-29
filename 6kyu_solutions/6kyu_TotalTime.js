@@ -60,7 +60,7 @@ function totalTime(arr) {
   }
 }
 
-// console.log(totalTime(["50:02:02"]));
+console.log(totalTime(["00:50", "00:30"]));
 
 function splitTime(arr) {
   let days = Math.floor(Number(arr[0] / 24));
@@ -107,6 +107,7 @@ function sumTime(arr) {
   let minutes = 0;
   let hours = 0;
   let seconds = 0;
+  let days = 0;
 
   arr[0] = arr[0].split(":");
   arr[1] = arr[1].split(":");
@@ -123,10 +124,19 @@ function sumTime(arr) {
       //    console.log(remainder)
       seconds = Math.floor(remainder);
     }
-    console.log(arr[1].length)
-  } else if (arr[0].length === 3 ) {
-      hours = Math.floor((Number(arr[0][1]) + Number(arr[1][0])) / 60);
-      minutes = Math.floor((Number(arr[0][1]) + Number(arr[1][1])) / 60);
+} else if (arr[0].length === 3 && arr[1].length === 2) {
+    //   days = Math.floor(Number(arr[0] / 24));
+    //   hours = Math.floor((Number(arr[0][1]) + Number(arr[1][0])) / 60);
+    minutes = Number(arr[0][1]) + Number(arr[1][0]);
+    console.log(minutes)
+    if(minutes === 60 ) {
+        hours = Number(arr[0][0]) + 1 
+        minutes = Math.floor(minutes % 60)
+        return minutes === 0 ? `${hours} hours` : hours + "," + " " + minutes + "," + " "
+    } else {
+        let remainder = Math.floor(minutes % 60)
+        hours = Number(arr[0][1] + minutes)
+    }
 
     //   console.log(hours)
   }
@@ -134,7 +144,7 @@ function sumTime(arr) {
   if (hours === 1) {
     //   console.log("HEERE")
     hours = `${hours} hour`;
-    console.log(hours, "HERE")
+    // console.log(hours, "HERE")
   } else {
       hours = `${hours} hours`
   }
@@ -151,7 +161,106 @@ function sumTime(arr) {
   }
 
 //   return hours + "," + " ", + minutes + "," + " " + seconds;
-return hours
+return hours + "," + " " + minutes
 
 }
-console.log(sumTime(["1:20:00", "40:00"]));
+console.log(sumTime(["00:50", "00:30"]));
+
+
+
+
+// function totalTime(arr) {
+  
+//     if(arr.length === 2) {
+//       return sumTime(arr)
+//     }
+//       arr = arr.toString("").split(":");
+//       console.log(Number(arr[0]))
+//       console.log(arr.length)
+//       if (arr.length === 1) {
+//           if(Number(arr[0]) === 60) {
+//           let minutes = Math.floor(Number(arr[0] / 60))
+//           return minutes === 1 ? minutes + " " + "minute" : minutes + "minutes";
+//       } else {
+//           arr[0].toString() + " " + 'minutes'
+//       } 
+//   }
+//   if (arr.length === 3) {
+//     return splitTime(arr);
+//   } else {
+//     arr = arr.toString("").split(":");
+//     let sum = Number(arr.join(""));
+//     //   console.log(sum);
+//     if (sum.length === 1 && sum === 60) {
+//       return `1 minute`;
+//     } else {
+//       return `${sum} minutes`;
+//     }
+//   }
+//   }
+  
+//   function splitTime(arr) {
+//     let days = Math.floor(Number(arr[0] / 24));
+//     let remainder = Number(arr[0]) % 24;
+//     let hours = Math.floor(remainder);
+//     let minutes = Math.floor(Number(arr[1]));
+//     let seconds = Number(arr[2]);
+  
+//     if (days === 1) {
+//       days = `${days} day`;
+//     } else {
+//       days = `${days} days`;
+//     }
+  
+//     if (minutes === 1) {
+//       minutes = `${minutes} minute`;
+//     } else {
+//       minutes = `${minutes} minutes`;
+//     }
+  
+//     if (hours === 1) {
+//       hours = `${hours} hour`;
+//     } else {
+//       hours = `${hours} hours`;
+//     }
+  
+//     if (seconds === 1) {
+//       seconds = `${seconds} second`;
+//     } else {
+//       seconds = `${seconds} seconds`;
+//     }
+  
+//     return `${days}, ${hours}, ${minutes}, ${seconds}`;
+//   }
+  
+//   function sumTime(arr) {
+//   arr[0] = arr[0].split(":");
+//     arr[1] = arr[1].split(":");
+  
+//     let minutes = Math.floor(Number(arr[0][0]) + Number(arr[1][0]));
+//     let seconds = Number(arr[0][1]) + Number(arr[1][1]);
+//     let remainder = Math.floor(Number(arr[0][1]) + Number(arr[1][1])) % 60;
+//     //    console.log(remainder)
+//     seconds = Math.floor(remainder);
+//     if (minutes === 0) {
+//       minutes = Math.floor((Number(arr[0][1]) + Number(arr[1][1])) / 60);
+//       let remainder = Math.floor(Number(arr[0][1]) + Number(arr[1][1])) % 60;
+//       //    console.log(remainder)
+//       seconds = Math.floor(remainder);
+//     }
+  
+//     if (minutes === 1) {
+//       minutes = `${minutes} minute`;
+//     } else {
+//       minutes = `${minutes} minutes`;
+//     }
+//     if (seconds === 1) {
+//       seconds = `${seconds} second`;
+//     } else {
+//       seconds = `${seconds} seconds`;
+//     }
+  
+//     return minutes + "," + " " + seconds;
+  
+  
+//   }
