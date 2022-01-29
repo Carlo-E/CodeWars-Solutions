@@ -60,7 +60,7 @@ function totalTime(arr) {
   }
 }
 
-console.log(totalTime(["50:02:02"]));
+// console.log(totalTime(["50:02:02"]));
 
 function splitTime(arr) {
   let days = Math.floor(Number(arr[0] / 24));
@@ -102,7 +102,6 @@ function sumTime(arr) {
   //   let hours = Math.floor(remainder);
   //   for(let i = 0; i < arr.length; i++){
   //       if(arr[0].split(":").length === 3 || arr[1].split(":").length === 3){
-
   //       }
   //   }
   let minutes = 0;
@@ -111,11 +110,6 @@ function sumTime(arr) {
 
   arr[0] = arr[0].split(":");
   arr[1] = arr[1].split(":");
-
-  //   if(arr[0].length === 3 || arr[1].split(":").length === 3){
-  //      Number(arr[0][1]) + Number(arr[1][0])
-
-  //   }
 
   if (arr[0].length === 2 && arr[0].length === 2) {
     minutes = Math.floor(Number(arr[0][0]) + Number(arr[1][0]));
@@ -129,11 +123,13 @@ function sumTime(arr) {
       //    console.log(remainder)
       seconds = Math.floor(remainder);
     }
-  } else if (arr[0].length === 3) {
+    console.log(arr[1].length)
+  } else if (arr[0].length === 3 ) {
       hours = Math.floor((Number(arr[0][1]) + Number(arr[1][0])) / 60);
+      minutes = Math.floor((Number(arr[0][1]) + Number(arr[1][1])) / 60);
+
     //   console.log(hours)
   }
-  console.log(hours, "HOURS")
 
   if (hours === 1) {
     //   console.log("HEERE")
