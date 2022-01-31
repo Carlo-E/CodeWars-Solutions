@@ -149,7 +149,7 @@ function totalTime(arr) {
     return hours === "0 hours"
       ? `${minutes},  ${seconds}`
       : `${days}, ${hours}, ${minutes}, ${seconds}`;
-  }
+  } 
 
   if (arr.length === 2) {
     return sumTime(arr);
@@ -176,7 +176,7 @@ function totalTime(arr) {
   }
 }
 
-console.log(totalTime(["01:20:00", "40:00"]));
+console.log(totalTime(["58"]));
 
 function splitTime(arr) {
   let days = Math.floor(Number(arr[0] / 24));
