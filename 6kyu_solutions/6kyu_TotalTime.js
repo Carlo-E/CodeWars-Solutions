@@ -138,6 +138,7 @@ function totalTime(arr) {
     if (hours >= 24) {
       remainder = hours % 24;
       days = Math.floor(hours / 24);
+      console.log(days)
       minutes = minutes + remainder;
     }
     if (days === 1) {
