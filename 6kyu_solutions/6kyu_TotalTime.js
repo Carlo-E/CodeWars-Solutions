@@ -38,18 +38,37 @@ function totalTime(arr) {
   let seconds = 0;
   let remainder = 0;
 
-
-  if (arr.every(el => Number(el) === 0 || Number(el) === 0)) {
-    return '0'
+  if (
+    arr.every(
+      (el) => el === "0" || el === "00" || el === "00:00" || el === "00:00:00"
+    )
+  ) {
+    return "0";
   }
 
   if (arr.length === 2) {
-    if(arr[0] === '0' && arr[1] === '0') {
-      return '0'
+    if (!arr[0].includes(":") || !arr[1].includes(":")) {
+      let sec1 = Number(arr[0]);
+      let sec2 = Number(arr[1]);
+      if (sec1 === 1) {
+        sec1 = `${sec1} second`;
+      } else {
+        sec1 = `${sec1} seconds`;
+      }
+      if (sec2 === 1) {
+        sec2 = `${sec2} second`;
+      } else {
+        sec2 = `${sec2} seconds`;
+      }
+      if (sec1 === "0 seconds") {
+        return `${sec2}`;
+      }
+      return `${sec1}`;
     }
+
     let min1 = arr[0].split(":");
     let min2 = arr[1].split(":");
-    console.log(min1, min2)
+    console.log(min1, min2);
     if (min1.length === 3 && min2.length === 2) {
       hours = Number(min1[0]);
       seconds = Number(min1[2]) + Number(min2[1]);
@@ -91,7 +110,6 @@ function totalTime(arr) {
       console.log(min3);
       hours = Number(min1[0]) + Number(min2[0]) + Number(min3[0]);
       minutes = Number(min1[1]) + Number(min2[1]) + Number(min3[1]);
-      console.log(hours, minutes);
     }
 
     let minSum = Number(min1[0]) + Number(min2[0]);
@@ -125,8 +143,33 @@ function totalTime(arr) {
       return `${minSum}, ${secSum}`;
     }
   } else if (arr.length === 3) {
-    if(arr[0] === '0' && arr[1] === '0' && arr[2] === '0') {
-      return '0'
+    console.log("HERE");
+    if (!arr[0].includes(":") || !arr[1].includes(":")) {
+      let sec1 = Number(arr[0]);
+      let sec2 = Number(arr[1]);
+      let sec3 = Number(arr[2]);
+      if (sec1 === 1) {
+        sec1 = `${sec1} second`;
+      } else {
+        sec1 = `${sec1} seconds`;
+      }
+      if (sec2 === 1) {
+        sec2 = `${sec2} second`;
+      } else {
+        sec2 = `${sec2} seconds`;
+      }
+      if (sec3 === 1) {
+        sec3 = `${sec3} second`;
+      } else {
+        sec3 = `${sec3} seconds`;
+      }
+      if (sec1 === "0 seconds" && sec2 === "0 seconds") {
+        return `${sec3}`;
+      } else if (sec1 === "0 seconds" && sec3 === "0 seconds") {
+        return `${sec2}`;
+      } else {
+        return `${sec1}`;
+      }
     }
     let min1 = arr[0].split(":");
     let min2 = arr[1].split(":");
@@ -200,6 +243,40 @@ function totalTime(arr) {
       }
       return `${days}, ${hours}, ${minutes}, ${seconds}`;
     }
+  } else if (arr.length === 4) {
+    if (!arr[0].includes(":") || !arr[1].includes(":")) {
+      let sec1 = Number(arr[0]);
+      let sec2 = Number(arr[1]);
+      let sec3 = Number(arr[2]);
+      let sec4 = Number(arr[3]);
+      if (sec1 === 1) {
+        sec1 = `${sec1} second`;
+      } else {
+        sec1 = `${sec1} seconds`;
+      }
+      if (sec2 === 1) {
+        sec2 = `${sec2} second`;
+      } else {
+        sec2 = `${sec2} seconds`;
+      }
+      if (sec3 === 1) {
+        sec3 = `${sec3} second`;
+      } else {
+        sec3 = `${sec3} seconds`;
+      }
+      if (sec4 === 1) {
+        sec4 = `${sec4} second`;
+      } else {
+        sec4 = `${sec4} seconds`;
+      }
+      if (sec1 === "0 seconds" && sec2 === "0 seconds" && sec3 === "0 seconds") {
+        return `${sec4}`;
+      } else if (sec1 === "0 seconds" && sec4 === "0 seconds" && sec3 === "0 seconds") {
+        return `${sec2}`;
+      } else {
+        return `${sec1}`
+      }
+    }
   }
   arr = arr[0].split(":");
   if (arr.length === 1) {
@@ -225,8 +302,8 @@ function totalTime(arr) {
       } else {
         seconds = `${seconds} seconds`;
       }
-      if(seconds === "0 seconds") {
-        return '0'
+      if (seconds === "0 seconds") {
+        return "0";
       }
       return seconds;
     }
@@ -259,6 +336,6 @@ function totalTime(arr) {
     return hours === "0 hours"
       ? `${minutes},  ${seconds}`
       : `${days}, ${hours}, ${minutes}, ${seconds}`;
-  } 
+  }
 }
-console.log(totalTime(['00','00']))
+console.log(totalTime(["00", "00", "00", "01"]));
