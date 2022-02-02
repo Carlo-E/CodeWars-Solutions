@@ -47,7 +47,6 @@ function totalTime(arr) {
   }
 
   if (arr.length === 2) {
-    console.log("HJERE")
     if (!arr[0].includes(":") || !arr[1].includes(":")) {
       let sec1 = Number(arr[0]);
       let sec2 = Number(arr[1]);
@@ -57,7 +56,7 @@ function totalTime(arr) {
       } else {
         sum = `${sum} seconds`;
       }
-      
+
       if (sum === "0 seconds") { 
         return `${sum}`;
       }
@@ -144,28 +143,13 @@ function totalTime(arr) {
       let sec1 = Number(arr[0]);
       let sec2 = Number(arr[1]);
       let sec3 = Number(arr[2]);
-      if (sec1 === 1) {
-        sec1 = `${sec1} second`;
+      let sum = sec1 + sec2 + sec3 
+      if (sum === 1) {
+        sum = `${sum} second`;
       } else {
-        sec1 = `${sec1} seconds`;
+        sum = `${sum} seconds`;
       }
-      if (sec2 === 1) {
-        sec2 = `${sec2} second`;
-      } else {
-        sec2 = `${sec2} seconds`;
-      }
-      if (sec3 === 1) {
-        sec3 = `${sec3} second`;
-      } else {
-        sec3 = `${sec3} seconds`;
-      }
-      if (sec1 === "0 seconds" && sec2 === "0 seconds") {
-        return `${sec3}`;
-      } else if (sec1 === "0 seconds" && sec3 === "0 seconds") {
-        return `${sec2}`;
-      } else {
-        return `${sec1}`;
-      }
+      return sum
     }
     let min1 = arr[0].split(":");
     let min2 = arr[1].split(":");
@@ -342,4 +326,4 @@ function totalTime(arr) {
       : `${days}, ${hours}, ${minutes}, ${seconds}`;
   }
 }
-console.log(totalTime(["04","01"]));
+console.log(totalTime(["04","01",'01']));
