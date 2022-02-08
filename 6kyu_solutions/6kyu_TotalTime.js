@@ -388,11 +388,12 @@ function totalTime(arr) {
       return sum;
     }
   } else if (arr.length > 4) {
+    
     for (let i = 0; i < arr.length; i++) {
       if (arr[i].includes(":")) {
         arr[i] = arr[i].split(":");
         if (arr[i].length === 3) {
-          hours += Number(arr[i][0]);
+          hours += Number(arr[i][0]); 
           minutes += Number(arr[i][1]);
           seconds += Number(arr[i][2]);
         } else {
@@ -410,6 +411,17 @@ function totalTime(arr) {
         return secSum;
       }
     }
+    console.log(hours, minutes, seconds)
+    if(seconds >= 60){
+      minutes = minutes + Math.floor(seconds/60)
+      seconds = seconds % 60
+      if(minutes >= 60){
+        hours = hours + Math.floor(minutes/60)
+        minutes = minutes % 60
+        // hours = hours + Math.floor(minutes/60)
+      }
+      // console.log(seconds)
+    }
     if (seconds === 1) {
       seconds = `${seconds} second`;
     } else {
@@ -425,6 +437,12 @@ function totalTime(arr) {
     } else {
       hours = `${hours} hours`;
     }
+    if (days === 1) {
+      days = `${days} day`;
+    } else {
+      days = `${days} days`;
+    }
+    if(days) return `${days} ${hours}, ${minutes}, ${seconds}`
     if (hours) return `${hours}, ${minutes}, ${seconds}`
     if (seconds) return `${minutes}, ${seconds}`;
   }
