@@ -410,14 +410,12 @@ function totalTime(arr) {
         return secSum;
       }
     }
-    console.log(hours, minutes, seconds);
     if (seconds >= 60) {
       minutes = minutes + Math.floor(seconds / 60);
       seconds = seconds % 60;
       if (minutes >= 60) {
         hours = hours + Math.floor(minutes / 60);
         minutes = minutes % 60;
-        // hours = hours + Math.floor(minutes/60)
       }
       if (hours >= 24) {
         console.log(hours);
@@ -445,9 +443,14 @@ function totalTime(arr) {
     } else {
       days = `${days} days`;
     }
-    if (days !== "0 days" && hours !== '0 hours' && minutes !== '0 minutes' && seconds !== '0 seconds') {
+    if (
+      days !== "0 days" &&
+      hours !== "0 hours" &&
+      minutes !== "0 minutes" &&
+      seconds !== "0 seconds"
+    ) {
       return `${days}, ${hours}, ${minutes}, ${seconds}`;
-    } else if (hours === '0 hours') {
+    } else if (hours === "0 hours") {
       return `${days}, ${minutes}, ${seconds}`;
     } else if (hours === "0 hours") {
       return `${days}, ${minutes}, ${seconds}`;
