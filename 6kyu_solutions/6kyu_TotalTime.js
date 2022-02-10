@@ -31,6 +31,8 @@
 // totalTime(['12:00:00','10:00:00','02:00:00']); // --> '1 day'
 // totalTime(['24:00:00','24:00:00','07']); // --> '2 days, 7 seconds'
 
+
+// check replit code now
 function totalTime(arr) {
   let days = 0;
   let hours = 0;
