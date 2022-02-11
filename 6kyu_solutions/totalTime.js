@@ -1,4 +1,8 @@
 function totalTime(arr) {
+    if (arr.every(el => el === "0" || el === "00" || el === '00:00' || el === '00:00:00')) {
+        return '0'
+      } 
+
   let totalCount = {
     days: 0,
     hours: 0,
@@ -68,7 +72,7 @@ function formatTimeString(totalCount) {
     totalCount.days = `${totalCount.days} days`;
   }
   if (totalCount.hours === 1) {
-    totalCount.hours = `${totalCount.hours} hours`;
+    totalCount.hours = `${totalCount.hours} hour`;
   } else {
     totalCount.hours = `${totalCount.hours} hours`;
   }
@@ -83,22 +87,51 @@ function formatTimeString(totalCount) {
     totalCount.seconds = `${totalCount.seconds} seconds`;
   }
 
-  if (totalCount.days === '0 days') {
-    return `${totalCount.hours}, ${totalCount.minutes}, ${totalCount.seconds}`;
+  if(totalCount.days === '0 days' && totalCount.hours === '0 hours' && totalCount.seconds === '0 seconds'){
+      return totalCount.minutes
   }
+
+  if (totalCount.days === "0 days" && totalCount.hours === '0 hours' && totalCount.minutes === '0 minutes' ) {
+    return `${totalCount.seconds}`
+  } 
+
   if (totalCount.hours === '0 hours' && totalCount.days === '0 days') {
     return `${totalCount.minutes}, ${totalCount.seconds}`
   } 
-  if (totalCount.hours === '0 hours' && totalCount.days === '0 days' && totalCount.minutes === '0 minutes') {
-    return `${totalCount.seconds}`
+
+  if (totalCount.days === '0 days' && totalCount.minutes === '0 minutes' && totalCount.seconds === '0 seconds') {
+    return totalCount.hours
   } 
-  if (totalCount.hours === '0 hours') {
-    return `${totalCount.days}, ${totalCount.minutes}, ${totalCount.seconds}`
+
+  if (totalCount.hours === '0 hours' && totalCount.minutes === '0 minutes' && totalCount.seconds === '0 seconds') {
+    return totalCount.days
+  } 
+  
+  
+  if (totalCount.hours === '0 hours' && totalCount.minutes === '0 minutes') {
+    return `${totalCount.days}, ${totalCount.seconds}`
+  } 
+
+  if (totalCount.hours === '0 hours' && totalCount.minutes === '0 minutes') {
+    return `${totalCount.days}, ${totalCount.seconds}`
+  } 
+
+  if (totalCount.days === '0 days') {
+    return `${totalCount.hours}, ${totalCount.minutes}, ${totalCount.seconds}`;
   }
+  if (totalCount.seconds === '0 seconds') {
+    return `${totalCount.hours}, ${totalCount.minutes}, ${totalCount.minutes}`;
+  }
+//   if (totalCount.hours === '0 hours' && totalCount.days === '0 days' && totalCount.minutes === '0 minutes') {
+//     return `${totalCount.seconds}`
+//   } 
+//   if (totalCount.hours === '0 hours') {
+//     return `${totalCount.days}, ${totalCount.minutes}, ${totalCount.seconds}`
+//   }
   return `${totalCount.days}, ${totalCount.hours}, ${totalCount.minutes}, ${totalCount.seconds}`;
 }
 
 // console.log(getCurrCount("45"))
-let arr = ["24:34:34", "56", "3:34:27"];
+let arr = ['01'];
 
 console.log(totalTime(arr));
