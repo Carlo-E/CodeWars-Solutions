@@ -28,15 +28,17 @@
 //     return output;
 //   }
 
+// function getCommonDirectoryPath(pathes) {
+//   for (let i = 0; i < pathes.length; i++) {
+//     pathes[i] = pathes[i].split("/");
+//   }
+//   for (let i = 0; i < pathes.length; i++) {}
+// }
+// console.log(
+//   getCommonDirectoryPath(["web/images/image1.png", "/web/images/image2.png"])
+// );
+
+
 function getCommonDirectoryPath(pathes) {
-  for(let i = 0; i < pathes.length; i++){
-    pathes[i] = pathes[i].split("/")
-    
-  }
-for(let i = 0; i < pathes.length; i++){
   
 }
-}
-console.log(
-  getCommonDirectoryPath(["web/images/image1.png", "/web/images/image2.png"])
-);
