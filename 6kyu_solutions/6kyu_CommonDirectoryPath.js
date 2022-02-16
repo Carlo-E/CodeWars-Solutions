@@ -28,29 +28,24 @@
 //     return output;
 //   }
 
-// function getCommonDirectoryPath(pathes) {
-//   for (let i = 0; i < pathes.length; i++) {
-//     pathes[i] = pathes[i].split("/");
-//   }
-//   for (let i = 0; i < pathes.length; i++) {}
-// }
-// console.log(
-//   getCommonDirectoryPath(["web/images/image1.png", "/web/images/image2.png"])
-// );
-
 function getCommonDirectoryPath(pathes) {
-  // console.log()
-  let arr = []
-  for(let i = 0; i < pathes.length; i++){
-    pathes[i] = pathes[i].split("/")
-    for(let j = 0; j < pathes[i].length; j++){
-        // if(pathes[i][i] === pathes[j][j]){
-            console.log(pathes[i][i])
-        // }
+  let file1 = pathes[0]
+  for (let i = 1; i < pathes.length; i++) {
+    let file = pathes[i].split("/");
+    for (let j = 0; j < file.length; j++) {
+      if (file1[j] === file[j]) {
+        file1 = file1.substring(0,j)
+      }
     }
   }
-  console.log(arr)
+console.log(file1)
+  let indexer = file1.lastIndexOf("/");
+  if(indexer != -1){
+    file1 = file1.substring(0,indexer+1);
+  }
 
+
+  return file1
 }
 console.log(
   getCommonDirectoryPath(["/web/images/image1.png", "/web/images/image2.png"])
@@ -100,23 +95,23 @@ function bestPros(pros, k) {
 function categorySuggestions(categories, projects, k) {
   let obj = {};
 
-  for(let j = 0; j < projects.length; j++){
-  for (let i = 0; i < categories.length; i++) {
-    let arr = categories[i].split(",");
-      if(arr.includes(projects[j])) {
-           console.log(arr)
-        }
+  for (let j = 0; j < projects.length; j++) {
+    for (let i = 0; i < categories.length; i++) {
+      let arr = categories[i].split(",");
+      if (arr.includes(projects[j])) {
+        console.log(arr);
       }
     }
+  }
 
-//   for (let i = 0; i < categories.length; i++) {
-//     let arr = categories[i].split(";");
-//     for (let j = 0; j < projects.length; j++) {
-//       if (arr.includes(projects[j])) {
-//         console.log(arr);
-//       }
-//     }
-//   }
+  //   for (let i = 0; i < categories.length; i++) {
+  //     let arr = categories[i].split(";");
+  //     for (let j = 0; j < projects.length; j++) {
+  //       if (arr.includes(projects[j])) {
+  //         console.log(arr);
+  //       }
+  //     }
+  //   }
 }
 // console.log(
 //   categorySuggestions(
