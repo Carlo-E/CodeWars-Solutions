@@ -38,89 +38,98 @@
 //   getCommonDirectoryPath(["web/images/image1.png", "/web/images/image2.png"])
 // );
 
-// function getCommonDirectoryPath(pathes) {
-//   // console.log()
-//   let arr = []
-//   for(let i = 0; i < pathes.length; i++){
-//     pathes[i] = pathes[i].split("/")
-//     for(let j = 0; j < pathes.length; j++){
-//         if(pathes[i][i] === pathes[j][j]){
-//             arr.push(pathes[i][i])
-//         }
-//     }
-//   }
-//   console.log(arr)
+function getCommonDirectoryPath(pathes) {
+  // console.log()
+  let arr = []
+  for(let i = 0; i < pathes.length; i++){
+    pathes[i] = pathes[i].split("/")
+    for(let j = 0; j < pathes[i].length; j++){
+        // if(pathes[i][i] === pathes[j][j]){
+            console.log(pathes[i][i])
+        // }
+    }
+  }
+  console.log(arr)
 
-// }
-// console.log(
-//   getCommonDirectoryPath(["/web/images/image1.png", "/web/images/image2.png"])
-// );
+}
+console.log(
+  getCommonDirectoryPath(["/web/images/image1.png", "/web/images/image2.png"])
+);
 
-// add i to store as array of array 
+// add i to store as array of array
 function bestPros(pros, k) {
   let distances = [];
   for (let i = 0; i < pros.length; i++) {
     distances.push(pros[i][0]);
   }
+
   let pmsScores = [];
   let maxDistance = Math.max(...distances);
-  // console.log(maxDistance)
   for (let i = 0; i < pros.length; i++) {
-    pmsScores.push((maxDistance - pros[i][0]) * pros[i][1]);
+    pmsScores.push([(maxDistance - pros[i][0]) * pros[i][1], i]);
   }
-  console.log(pmsScores, "PMS")
-  let pmsSort = [...pmsScores].sort((a, b) => b - a);
+  pmsScores.sort((a, b) => b[0] - a[0]);
+
   let bestScores = [];
   for (let i = 0; i < k; i++) {
-    bestScores.push(pmsSort[i]);
+    bestScores.push(pmsScores[i]);
   }
-  console.log(bestScores, "BEST SCORES")
-  let idxs = [];
-  // let bestScores = new Set (bestScores);
-  for (let i = 0; i < pmsScores.length; i++) {
 
-      // if(bestScores2.has(bestScores[i])){
-      //   idxs.push(i);
-      // }
-    for (j = 0; j < pmsScores.length; j++) {
-      if (bestScores[i] === pmsScores[j]) {
-        idxs.push(j);
-      }
-    }
+  let idxs = [];
+  for (let i = 0; i < bestScores.length; i++) {
+    idxs.push(bestScores[i][1]);
   }
-  return [... new Set(idxs)]
-  
+  return idxs;
 }
 
-// console.log(bestPros([[ 2, 5 ], [ 5, 6 ], [ 8, 10 ], [ 3, 4 ], [ 5, 10 ] ], 3) );
-
+// console.log(
+// bestPros(
+//   [
+//     [2, 5],
+//     [5, 6],
+//     [8, 10],
+//     [3, 4],
+//     [5, 10],
+//   ],
+//   3
+// )
+// );
 
 // 0, 1, 2, 3, 4
 
-
 function categorySuggestions(categories, projects, k) {
-  // Write your code here
-  console.log(categories, "CATS")
-  console.log(projects, "PROJECTS")
-  console.log(k, "K")
+  let obj = {};
 
-  let state = new Map();
+  for(let j = 0; j < projects.length; j++){
+  for (let i = 0; i < categories.length; i++) {
+    let arr = categories[i].split(",");
+      if(arr.includes(projects[j])) {
+           console.log(arr)
+        }
+      }
+    }
 
-  for(let i = 0; i < categories.length; i++){
-     let category = categories[i].split(",")
-     let cat = state.set(category[0], new Map())
-     state.set(category[1], Number(category[2]))
-     state.set(category[0], cat)
-  }
-console.log(state)
-
+//   for (let i = 0; i < categories.length; i++) {
+//     let arr = categories[i].split(";");
+//     for (let j = 0; j < projects.length; j++) {
+//       if (arr.includes(projects[j])) {
+//         console.log(arr);
+//       }
+//     }
+//   }
 }
-console.log(categorySuggestions([
-  'House Painting,Interior Painting,0.9',
-  'Handyman,Massage Therapy,0.1',
-  'Handyman,House Painting,0.5',
-  'House Painting,House Cleaning,0.6',
-  'Furniture Assembly,Handyman,0.8',
-  'Furniture Assembly,Massage Therapy,0.1',
-  'Plumbing Drain Repair,Junk Removal,0.3'
-], [ 'House Painting', 'Handyman' ] , 3))
+// console.log(
+//   categorySuggestions(
+//     [
+//       "House Painting,Interior Painting,0.9",
+//       "Handyman,Massage Therapy,0.1",
+//       "Handyman,House Painting,0.5",
+//       "House Painting,House Cleaning,0.6",
+//       "Furniture Assembly,Handyman,0.8",
+//       "Furniture Assembly,Massage Therapy,0.1",
+//       "Plumbing Drain Repair,Junk Removal,0.3",
+//     ],
+//     ["House Painting", "Handyman"],
+//     3
+//   )
+// );
