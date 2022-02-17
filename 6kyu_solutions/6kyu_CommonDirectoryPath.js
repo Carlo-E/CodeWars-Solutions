@@ -14,38 +14,60 @@
 
 //     for(let i=1; i<pathes.length; i++){
 //       for(let j=0; j<pathes[i].length; j++){
-//         if(output[j] != pathes[i][j]){
+//         if(output[j] !== pathes[i][j]){
+//           // console.log(output[j])
 //           output = output.substring(0,j);
 //         }
 //       }
 //     }
 
+//     console.log(output)
 //     let indexer = output.lastIndexOf("/");
+//     console.log(indexer)
 //     if(indexer != -1){
 //       output = output.substring(0,indexer+1);
+//       // /web/images/image
+//       console.log(output)
 //     }
 
 //     return output;
 //   }
 
 function getCommonDirectoryPath(pathes) {
-  let file1 = pathes[0]
+  let output = pathes[0];
+
   for (let i = 1; i < pathes.length; i++) {
-    let file = pathes[i].split("/");
-    for (let j = 0; j < file.length; j++) {
-      if (file1[j] === file[j]) {
-        file1 = file1.substring(0,j)
+    for (let j = 0; j < pathes[i].length; j++) {
+      if (output[j] !== pathes[i][j]) {
+        output = output.substring(0, j);
       }
     }
-  }
-console.log(file1)
-  let indexer = file1.lastIndexOf("/");
-  if(indexer != -1){
-    file1 = file1.substring(0,indexer+1);
+    let indexer = output.lastIndexOf("/");
+    if (indexer !== -1) {
+      output = output.substring(0, indexer + 1);
+    }
+
+    return output;
   }
 
+  //   let file1 = pathes[0]
+  //   // "/web/images/image1.png"
+  //   for (let i = 1; i < pathes.length; i++) {
+  //     // let file = pathes[i].split("/");
+  //     for (let j = 0; j < pathes[i].length; j++) {
+  //       // "/web/images/image2.png"
+  //       if (file1[j] === pathes[i][j]) {
+  //         file1 = file1.substring(0,j)
+  //       }
+  //     }
+  //   }
+  // console.log(file1)
+  //   let indexer = file1.lastIndexOf("/");
+  //   if(indexer != -1){
+  //     file1 = file1.substring(0,indexer+1);
+  //   }
 
-  return file1
+  //   return file1
 }
 console.log(
   getCommonDirectoryPath(["/web/images/image1.png", "/web/images/image2.png"])
