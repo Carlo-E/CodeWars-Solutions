@@ -31,9 +31,6 @@
 // The second line contains  space-separated integers, , denoting the respective , , and  on which the book was due to be returned.
 
 function libraryFine(d1, m1, y1, d2, m2, y2) {
-  // Write your code here
-  // let fine = 0;
-
   if (y1 > y2) {
     return 10000;
   } else if (y1 === y2 && m1 > m2) {
