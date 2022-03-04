@@ -13,7 +13,7 @@ function birthday(s, d, m) {
 
   return count;
 }
-console.log(birthday([2, 2, 1, 3, 2], 4, 2));
+console.log(birthday([2, 2, 1, 4, 2], 4, 2));
 
 // if add el to the next el = birth day push it to an array
 
