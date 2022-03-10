@@ -4,15 +4,29 @@ function diagonalDifference(arr) {
   let sumRight = 0;
   let sumLeft = 0;
   for (let i = 0; i < arr.length; i++) {
-    sumRight = arr[0][0] + arr[1][1] + arr[2][2];
-    sumLeft = arr[0][2] + arr[1][1] + arr[2][0];
+    for(let j = i; j < arr.length; j++){
+        // console.log(arr[i][j])
+        sumRight+= arr[i][j]
+        break;
+    }
   }
-  return Math.abs(sumRight - sumLeft);
+  let reverse = [];
+  arr.map(el => reverse.push(el.reverse()));
+  console.log(reverse)
+  for(let i = 0; i < reverse.length; i++){
+    for(let j = i; j < reverse.length; j++){
+        // console.log(reverse[i][j])
+        sumLeft+= reverse[i][j]
+        break;
+    }
+  }
+//   console.log(sumRight)
+//   return Math.abs(sumRight - sumLeft);
 }
 console.log(
   diagonalDifference([
-    [1, 2, 3, 1],
-    [4, 5, 6, 1],
-    [9, 8, 9, 1],
+    [1, 2, 3,],
+    [4, 5, 6],
+    [9, 8, 9],
   ])
 );
