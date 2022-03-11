@@ -5,7 +5,6 @@ function diagonalDifference(arr) {
   let sumLeft = 0;
   for (let i = 0; i < arr.length; i++) {
     for(let j = i; j < arr.length; j++){
-        // console.log(arr[i][j])
         sumRight+= arr[i][j]
         break;
     }
@@ -15,13 +14,12 @@ function diagonalDifference(arr) {
   console.log(reverse)
   for(let i = 0; i < reverse.length; i++){
     for(let j = i; j < reverse.length; j++){
-        // console.log(reverse[i][j])
+        console.log(reverse[i][j])
         sumLeft+= reverse[i][j]
         break;
     }
   }
-//   console.log(sumRight)
-//   return Math.abs(sumRight - sumLeft);
+  return Math.abs(sumRight - sumLeft);
 }
 console.log(
   diagonalDifference([
