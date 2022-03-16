@@ -23,7 +23,7 @@ function alternate(s) {
       break;
     }
   }
-  return arr.filter((el) => el != arr2[0]).join("");
+  return arr.filter((el) => el != arr2[0]).join('');
 }
 console.log(alternate("asdcbsdcagfsdbgdfanfghbsfdab"));
 
