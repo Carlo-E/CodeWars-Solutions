@@ -25,7 +25,7 @@ function stringOrInteger(str, num) {
     return Number(str) + num;
   }
 }
-console.log(stringOrInteger("123", 45));
+console.log(stringOrInteger("1235", 45));
 // can the string be empty
 // can the string they be in the wrong postion?
 // can they be the same length, what happens then?
