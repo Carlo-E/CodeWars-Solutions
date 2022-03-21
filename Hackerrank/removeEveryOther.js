@@ -25,7 +25,7 @@ function stringOrInteger(str, num) {
     return Number(str) + num;
   }
 }
-console.log(stringOrInteger("1235", 45));
+// console.log(stringOrInteger("1235", 45));
 // can the string be empty
 // can the string they be in the wrong postion?
 // can they be the same length, what happens then?
@@ -33,3 +33,15 @@ console.log(stringOrInteger("1235", 45));
 // if it is then add them and return the sum
 // else if it is smaller
 // turn the str into a number and add it to the integer and return
+
+
+// given an array of intergers, each representing a gap, and an interger maxGap
+// that a player can cross, return true if the player can get across all the gaps
+// or false if not
+function crossGap(arr, num) {
+   return arr.every(el => num >= el)
+}
+console.log(crossGap([3,6,1,4], 5))
+// loop array 
+// if num > arr[i] return true 
+// else false 
