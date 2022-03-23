@@ -59,11 +59,11 @@ function maxStacked(matrix, stackSize = 2) {
   for (let i = 0; i <= matrix.length - stackSize; i++) {
     //  console.log(matrix.length - stackSize)
     for (let j = 0; j < matrix[i].length; j++) {
-        // console.log(matrix[i].length)
+      // console.log(matrix[i])
       let columnArr = [];
       for (let m = 0; m < stackSize; m++) {
+        // console.log(matrix[i + m][j])
         columnArr.push(matrix[i + m][j]);
-        // 
       }
       let currMax = columnArr.reduce((a, b) => a + b);
       if (currMax > maxStack) maxStack = currMax;
@@ -71,4 +71,35 @@ function maxStacked(matrix, stackSize = 2) {
   }
   return maxStack;
 }
-console.log(maxStacked(matrix3))
+// console.log(maxStacked(matrix3))
+
+// [3, 6, 8],
+//   [2, 0, 9],
+//   [3, 6, 1],
+
+const maxTwoDiagonalValues = (matrix) => {
+  let maxSum = -Infinity;
+
+  for (let i = 0; i < matrix.length - 1; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      let currMax;
+
+      if (j == 0) {
+        currMax = matrix[i][j] + matrix[i + j][j + 1];
+      }
+
+      if (j > 0 && j < matrix[i].length - 1) {
+        let maxDiagonal = Math.max(matrix[i + 1][j - 1], matrix[i + 1][j + 1]);
+        currMax = matrix[i][j] + maxDiagonal;
+      }
+
+      if (j == matrix[i].length - 1) {
+        currMax = matrix[i][j] + matrix[i + 1][j - 1];
+      }
+
+      if (currMax > maxSum) maxSum = currMax;
+    }
+  }
+  return maxSum;
+};
+console.log(maxTwoDiagonalValues(matrix1))
