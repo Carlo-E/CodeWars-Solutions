@@ -73,7 +73,7 @@ function maxStacked(matrix, stackSize = 2) {
 }
 // console.log(maxStacked(matrix3))
 
-// [3, 6, 8],
+//   [3, 6, 8],
 //   [2, 0, 9],
 //   [3, 6, 1],
 
@@ -83,13 +83,28 @@ const maxTwoDiagonalValues = (matrix) => {
   for (let i = 0; i < matrix.length - 1; i++) {
     for (let j = 0; j < matrix[i].length; j++) {
       let currMax;
+// console.log(matrix[i], 'mi')
+// console.log(i, j)
+// matrix[0][1] = 6
+// matrix[1][2] = 9
+// matrix[2][3] = 
 
-      if (j == 0) {
-        currMax = matrix[i][j] + matrix[i + j][j + 1];
+if (j == 0) {
+  // console.log(matrix[i + j])
+  // console.log(matrix[i][j])
+  // console.log(matrix[i + j][j + 1]) 
+  currMax = matrix[i][j] + matrix[i + j][j + 1];
+        // matrix[0 + 0][0 + 1] = 
+        // console.log(matrix[i][j] + matrix[i + j][j + 1]) 
       }
 
       if (j > 0 && j < matrix[i].length - 1) {
         let maxDiagonal = Math.max(matrix[i + 1][j - 1], matrix[i + 1][j + 1]);
+        // matrix[1 + 1][1 - 1], matrix[1 +  1][1 + 1]
+        // matrix[2][0], matrix[2][2]
+        // 3, 1 
+        // 3
+        console.log(maxDiagonal, "max", j)
         currMax = matrix[i][j] + maxDiagonal;
       }
 
@@ -103,3 +118,7 @@ const maxTwoDiagonalValues = (matrix) => {
   return maxSum;
 };
 console.log(maxTwoDiagonalValues(matrix1))
+
+//   [3, 6, 8],
+//   [2, 0, 9],
+//   [3, 6, 1],
