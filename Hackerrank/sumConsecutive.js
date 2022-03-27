@@ -117,8 +117,39 @@ if (j == 0) {
   }
   return maxSum;
 };
-console.log(maxTwoDiagonalValues(matrix1))
+// console.log(maxTwoDiagonalValues(matrix1))
 
 //   [3, 6, 8],
 //   [2, 0, 9],
 //   [3, 6, 1],
+
+// write a function solution that, given an interger N retutns the ,maximum possible value obtainable 
+// by deleting on '5' 
+
+// given N = 15958 return 1958
+// given N = -5000 return 0
+
+function solution (N) {
+//   let reverse = N.toString().split("").reverse("")
+//   N = N.toString().split("")
+//   let index = N.indexOf("5")
+//   let val2 =  reverse.filter((el, i) => i !== index).reverse()
+//   let val1 =  N.filter((el, i) => i !== index)
+// console.log(val2)
+//   console.log(val1)
+
+  N = N.toString().split("")
+let indexes = []
+  for(let i = 0; i < N.length; i++){
+    if((N[i] === '5')) {
+      indexes.push(i)
+    }
+  }
+
+  
+
+  console.log(indexes)
+
+
+}
+console.log(solution(15958))
