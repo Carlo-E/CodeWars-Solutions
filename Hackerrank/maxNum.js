@@ -19,4 +19,4 @@ function solution(N) {
 
   return Math.max(...arrOfPossibleNums);
 }
-console.log(solution(15959));
+console.log(solution(15979));
